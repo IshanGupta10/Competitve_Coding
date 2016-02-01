@@ -4,24 +4,45 @@ using namespace std;
 
 typedef unsigned long long int ulli;
 
-int main()
+int main() 
 {
-    int N;
-    cin>>N;
-    ulli num;
-    ulli ans=0;
-    int min_odd=1000000005;
-    for(int i=0;i<N;i++){
-        cin>>num;
-        ans+=num;
-        if(num%2)
-        {
-            if(num<min_odd)
-                min_odd=num;
-        }
-    }
-    if(ans%2)
-            ans-=min_odd;
-      cout<<ans;
-    return 0;
+	ulli sum = 0, x, n;
+	cin>>n;
+	vector<ulli> v;
+
+	for(int i =0; i<n;++i)
+	{
+		cin>>x;
+		v.push_back(x);	
+	}
+
+	sort(v.begin(),v.end());
+
+	for(auto i:v)
+	{
+		sum+=i;	
+	}
+
+	if(n == 1)
+	{
+		if(v[0]%2 == 0)
+			cout<<v[0]<<'\n';
+		else
+			cout<<0<<'\n';
+	}
+	else if(sum%2 == 0)
+		cout<<sum<<'\n';
+	else
+	{
+		for(auto i:v)
+		{
+			if(i%2 != 0)
+			{
+				sum -= i;
+				break;
+			}
+		}
+		cout<<sum<<'\n';
+	}
+	return 0;
 }
