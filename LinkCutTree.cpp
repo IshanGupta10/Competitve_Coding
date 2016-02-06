@@ -7,18 +7,16 @@ int main()
 	cin.tie(0);
 	unsigned long long int l, r, k, ans = 1, flag = 0;
 	cin>>l>>r>>k;
-	while(1)
+	while(ans <= r)
 	{
-		if(ans >= l)
+		if(ans >= l && ans <= r)
+		{
+			cout<<ans<<" ";
+			flag = 1;
+		}
+		if(r/ans < k)
 			break;
-		else
-			ans *= k;
-	}
-	while(ans >= l && ans <= r)
-	{
-		cout<<ans<<" ";
 		ans *= k;
-		flag = 1;
 	}
 	if(!flag)
 		cout<<-1<<'\n';
